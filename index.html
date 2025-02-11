@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ammuuuu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #333; /* Dark background */
+            background-image: url("./bg.jpg");
+            background-size: cover;
+            overflow: hidden;
+            background-attachment: fixed;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            width: 100%;
+            max-width: 600px;
+            height: 250px;
+            background-image: url("./section.png");
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            margin-top: 100px;
+            border: none;
+            background-color: #E32636;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #d62332;
+            transform: scale(1.1);
+        }
+
+        .flower-bouquet {
+    position: relative;
+    margin-left: -50px; /* Move bouquet more to the left */
+    width: 300px;
+    height: 300px;
+    background-image: url('./bou.png'); /* Replace with your bouquet image */
+    background-size: cover;
+    animation: bouquetAnimation 5s ease-in-out infinite; /* Apply infinite animation */
+    transform-origin: center;
+    opacity: 1; /* Ensure it is always visible */
+    top: 20%;
+    left: 30%; /* Adjusted left position */
+    transform: translateX(-50%);
+}
+
+/* Continuous floating animation */
+@keyframes bouquetAnimation {
+    0% {
+        transform: scale(0.9) translateY(0); /* No complete disappearance */
+    }
+    50% {
+        transform: scale(1) translateY(-10px);
+    }
+    100% {
+        transform: scale(0.9) translateY(0);
+    }
+}
+
+
+        /* Fade-in animation for the popup note */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .note {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 400px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 1s forwards;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .close-btn {
+            margin-top: 10px;
+            padding: 10px 25px;
+            background-color: #E32636;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #d62332;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <button onclick="showBouquet()">oruuu kuttiii suppiseeee</button>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeNote()"></div>
+
+    <!-- Note Popup -->
+    <div class="note" id="note">
+        <p>Happyyyy 10 monthsss to the besttt girlfriendddd, wifeeeeee, ammaaaaa and myyy babyyyyyy indhaangaaa oruuu fowerrr bokeyyyy yeeee chellathukuuuu😘😘😘🌏💕💕💕</p>
+        <div id="flower-bouquet-container" style="position:relative; margin-top: 20px;">
+            <!-- The bouquet will appear here after clicking the button -->
+        </div>
+        <button class="close-btn" onclick="closeNote()">Close</button>
+    </div>
+
+    <script>
+        function showBouquet() {
+            // Display the note and overlay
+            document.getElementById("note").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+
+            // Create the bouquet container inside the note
+            let bouquet = document.createElement("div");
+            bouquet.classList.add("flower-bouquet");
+            document.getElementById("flower-bouquet-container").appendChild(bouquet);
+        }
+
+        function closeNote() {
+            // Hide the note and overlay
+            document.getElementById("note").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+
+            // Remove bouquet after the note is closed
+            let bouquet = document.querySelector('.flower-bouquet');
+            bouquet && bouquet.remove();
+        }
+    </script>
+
+</body>
+</html>
